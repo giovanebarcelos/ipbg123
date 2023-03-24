@@ -1,0 +1,4 @@
+"nome" "nota"
+"Dick Vigarista" 7
+"Penélope Charmosa" 9
+"Muttley" 8

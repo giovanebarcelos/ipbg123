@@ -1,0 +1,4 @@
+"nome_produto","qtde","valor_unitario"
+"Mouse",3,35.8
+"Teclado",2,45.3
+"Fone de Ouvido",5,120.5
