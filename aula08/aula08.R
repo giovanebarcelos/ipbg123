@@ -1,18 +1,18 @@
 setwd('~/ipbg123/aula08')
 sparrows <- read.csv("sparrows.csv", header = TRUE, stringsAsFactors = TRUE)
 
-// Analisar dados
+# Analisar dados
 names(sparrows)
 str(sparrows)
 summary(sparrows)
 
-// Histograma
+# Histograma
 hist(sparrows$Tarsus)
 
-// Apresentar gráficos em 1 linha e duas colunas
+# Apresentar gráficos em 1 linha e duas colunas
 par(mfrow = c(1,2))
 
-// Histograma com parametros customizados
+# Histograma com parametros customizados
 hist(sparrows$Tarsus, breaks = 30, col = "blue")
 hist(sparrows$Tarsus, breaks = 30, col = "green", freq = FALSE)
 
