@@ -125,19 +125,51 @@ df3
 #15) Como usar a função separate para separar uma coluna de um data frame em duas ou mais colunas com base em um separador?
 #    Suponha que temos um data frame df com uma coluna nome_completo que contém o nome e sobrenome de uma pessoa, separados por um espaço. Podemos usar a função separate do pacote tidyr para separar a coluna em duas colunas, nome e sobrenome, com base no espaço.
 
+library(tidyr)
+
+# Criar dataframe de exemplo 
+df <- data.frame(nome_completo = c("Dick Vigarista", 'Penélope Charmosa'))
+
+# Separar a coluna nome_completo em duas colunas (nome, sobrenome) com base no espaço no nome_completo 
+df_sep <- separate(df, nome_completo, into = c("nome", "sobrenome"), sep = " ")
+
+print(df_sep)
+
 #16) Como usar a função separate para separar uma coluna de um data frame em duas ou mais colunas com base em um número fixo de caracteres?
 #    Suponha que temos um data frame df com uma coluna codigo que contém um código com um prefixo de duas letras e um número de três dígitos. Podemos usar a função separate do pacote tidyr para separar a coluna em duas colunas, prefixo e numero, com base no número fixo de caracteres de cada parte.
+
+df <- data.frame(codigo = c("XZ131", 'WH813', 'ACD789'))
+df_sep <- separate(df, codigo, into("prefixo", "numero"), sep=2)
+print(df_sep)
 
 #-> Unite
 #17) Como usar a função unite para unir duas ou mais colunas de um data frame em uma única coluna?
 #    Suponha que temos um data frame df com duas colunas, nome e sobrenome, e queremos unir essas colunas em uma única coluna, nome_completo. Podemos usar a função unite do pacote tidyr para fazer isso.
 
+library(tidyr)
+df <- data.frame(nome = c("Dick", "Penélope"), 
+                 sobrenome = c("Vigarista", "Charmosa"))
+df_unite <- unite(df, nome_completo, c("nome", "sobrenome"), sep=" ")
+print(df_unite)
+
 #18) Como usar a função unite para unir duas ou mais colunas de um data frame em uma única coluna com um separador diferente?
 #    Suponha que temos um data frame df com três colunas, cidade, estado e pais, e queremos unir essas colunas em uma única coluna, localizacao, com um separador diferente de um espaço, como uma vírgula. Podemos usar a função unite do pacote tidyr para fazer isso.
+
+library(tidyr)
+df <- data.frame(cidade = c("Porto Alegre", "Canoas"), 
+                 estado = c("RS", "RS"), 
+                 pais = c('Brasil', 'Brasil'))
+df_unite <- unite(df, localizacao, c("cidade", "estado","pais"), sep=", ")
+print(df_unite)
 
 #-> subset
 #19) Como usar a função subset para selecionar apenas as linhas de um data frame que atendem a uma determinada condição?
 #    Suponha que temos um data frame df com informações sobre algumas cidades, incluindo sua população. Queremos selecionar apenas as cidades com uma população superior a 1 milhão de habitantes. Podemos usar a função subset para isso.
+
+df <- data.frame( cidade = c('Porto Alegre', 'Canoas'), 
+                  populacao = c(3000000, 800000))
+df <- subset(df, populacao > 1000000)
+print(df)
 
 #20) Como usar a função subset para selecionar apenas algumas colunas de um data frame?
 #Suponha que temos um data frame df com informações sobre algumas cidades, incluindo sua população, sua localização e sua altitude. Queremos selecionar apenas as colunas cidade e populacao. Podemos usar a função subset para isso.
@@ -156,8 +188,24 @@ df3
 #24) Como usar a função sample_n para selecionar um número aleatório de linhas de um data frame?
 #Suponha que temos um data frame df com informações sobre algumas frutas, incluindo sua cor e seu preço. Queremos selecionar aleatoriamente 5 frutas do data frame. Podemos usar a função sample_n para isso.
 
+df <- data.frame( fruta = c('abacaxi', 'banana', 'uva'),
+                  cor = c('marrom', 'amarelo', 'roxo'), 
+                  preco = c(4.5, 3, 3.5) )
+
+df <- sample_n(df, 2)
+
+print(df)
+
 #25) Como usar a função sample_frac para selecionar uma fração aleatória de linhas de um data frame?
 #    Suponha que temos um data frame df com informações sobre algumas frutas, incluindo sua cor e seu preço. Queremos selecionar aleatoriamente 30% das frutas do data frame. Podemos usar a função sample_frac para isso.
+
+df <- data.frame( fruta = c('abacaxi', 'banana', 'uva'),
+                  cor = c('marrom', 'amarelo', 'roxo'), 
+                  preco = c(4.5, 3, 3.5) )
+
+df <- sample_frac(df, 0.7)
+
+print(df)
 
 #26) Como usar a função sample_n em conjunto com o operador - para selecionar aleatoriamente algumas linhas e excluir outras de um data frame?
 #    Suponha que temos um data frame df com informações sobre alguns animais, incluindo sua espécie e seu peso. Queremos selecionar aleatoriamente 3 animais do data frame, mas excluir um animal específico (por exemplo, o animal com a espécie "gato"). Podemos usar a função sample_n em conjunto com o operador - para isso.
