@@ -97,4 +97,9 @@ barplot(df$QtdeVendas, names.arg = df$Produto,
         main = "Comparativo quantidade de vendas",
         xlab = "Produto", ylab = "Qtde Vendas")
 
+#12) Crie um gráfico de pizza para mostrar a proporção de diferentes categorias.
+
+df <- data.frame(categoria = c('A', 'B', 'C', 'D'), 
+                 proporcao = c(0.4, 0.3, 0.2, 0.1) )
+pie(df$proporcao, labels = df$categoria, main = "Proporção de Categorias")
 
